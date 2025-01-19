@@ -8,6 +8,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @SpringBootApplication
 public class GenericsApplication implements CommandLineRunner {
 
@@ -25,5 +28,13 @@ public class GenericsApplication implements CommandLineRunner {
 
 		Servico servico1 = new Servico("instalação");
 		Avaliacao<Servico> avaliacao3 = new Avaliacao<>(servico1, 5);
+
+		List<Avaliacao<?>> listaDeAvaliacao = new ArrayList<>();
+		listaDeAvaliacao.add(avaliacao1);
+		listaDeAvaliacao.add(avaliacao2);
+		listaDeAvaliacao.add(avaliacao3);
+
+		double media = Avaliacao.mediaAvaliacoes(listaDeAvaliacao);
+		System.out.println(media);
 	}
 }
